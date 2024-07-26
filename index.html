@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday</title>
+    <title>Birthday Celebration</title>
     <style>
         body {
             background-color: pink;
@@ -14,10 +14,9 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            position: relative;
-            background-image: url('https://github.com/DanielThinh/danielthinh.github.io/blob/main/detailed_hand_painted_pink_watercolour_background_0509.jpg');
-            background-size: cover; 
-            background-position: center; 
+            background-image: url('https://github.com/DanielThinh/danielthinh.github.io/blob/main/detailed_hand_painted_pink_watercolour_background_0509.jpg'); /* Thay đổi URL nếu cần */
+            background-size: cover;
+            background-position: center;
         }
         .center-box {
             background-color: white;
@@ -50,9 +49,14 @@
         moveButton.addEventListener('mouseover', () => {
             const boxWidth = centerBox.offsetWidth;
             const boxHeight = centerBox.offsetHeight;
-            const maxX = Math.min(window.innerWidth - boxWidth, 400);
-            const maxY = Math.min(window.innerHeight - boxHeight, 400);
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
 
+            // Tính toán phạm vi di chuyển để khung không bị di chuyển ra ngoài màn hình
+            const maxX = Math.min(viewportWidth - boxWidth, viewportWidth - boxWidth);
+            const maxY = Math.min(viewportHeight - boxHeight, viewportHeight - boxHeight);
+
+            // Tạo tọa độ ngẫu nhiên trong phạm vi
             const randomX = Math.random() * maxX;
             const randomY = Math.random() * maxY;
 
