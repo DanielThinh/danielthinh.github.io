@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Celebration</title>
+    <style>
+        body {
+            background-color: pink;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://via.placeholder.com/1500x1000.png?text=Happy+Birthday+Decoration');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+        .center-box {
+            background-color: white;
+            border: 2px solid yellow;
+            padding: 10px;
+            text-align: center;
+            position: absolute;
+            width: 200px;
+            transition: transform 0.5s ease;
+        }
+        button {
+            background-color: yellow;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="center-box" id="centerBox">
+        <p>Bấm vào nút dưới để nhận 50k từ Thịnh:)))</p>
+        <button id="moveButton">Bấm đây</button>
+    </div>
+
+    <script>
+        const moveButton = document.getElementById('moveButton');
+        const centerBox = document.getElementById('centerBox');
+        
+        moveButton.addEventListener('mouseover', () => {
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            const boxWidth = centerBox.offsetWidth;
+            const boxHeight = centerBox.offsetHeight;
+
+            const randomX = Math.random() * (viewportWidth - boxWidth);
+            const randomY = Math.random() * (viewportHeight - boxHeight);
+
+            centerBox.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        });
+    </script>
+</body>
+</html>
