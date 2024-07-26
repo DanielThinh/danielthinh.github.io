@@ -29,13 +29,13 @@
             transition: transform 0.3s ease; 
         }
         .inner-box {
-            background-color: pink;
+            background-color: yellow;
             border: 2px solid black;
             padding: 10px;
-            margin-top: 30px;
+            margin-top: 20px;
             display: inline-block;
-            width: 50px;
-            height: 30px; 
+            width:  60px; 
+            height: 20px; 
         }
         .inner-box p {
             margin: 0;
@@ -45,9 +45,9 @@
 </head>
 <body>
     <div class="center-box" id="centerBox">
-        <p>Bấm vào khung bên dưới để nhận 500k từ Thịnh:)))</p>
+        <p>Bấm vào nút bên dưới để nhận 500k từ Thịnh:)))</p>
         <div class="inner-box" id="innerBox">
-            <p>Bấm đây</p>
+            <p>Here:></p>
         </div>
     </div>
 
@@ -60,19 +60,19 @@
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
 
-       
-            const moveRangeX = 410; // Phạm vi di chuyển theo chiều ngang
-            const moveRangeY = 410;  // Phạm vi di chuyển theo chiều dọc
+            
+            const moveRangeX = 400; 
+            const moveRangeY = 400;  
 
- 
+            
             const randomX = Math.random() * moveRangeX;
             const randomY = Math.random() * moveRangeY;
 
             centerBox.style.transform = `translate(${randomX}px, ${randomY}px)`;
         };
 
-    
-         document.querySelector('.inner-box').addEventListener('mouseover', moveBox);
+       
+        document.querySelector('.inner-box').addEventListener('mouseover', moveBox);
     </script>
 </body>
 </html>
