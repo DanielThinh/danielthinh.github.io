@@ -8,15 +8,14 @@
         body {
             background-color: pink;
             font-family: Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
             background-image: url('https://via.placeholder.com/1500x1000.png?text=Happy+Birthday+Decoration');
             background-size: cover;
             background-position: center;
-            overflow: hidden;
         }
         .center-box {
             background-color: white;
@@ -25,7 +24,7 @@
             text-align: center;
             position: absolute;
             width: 200px;
-            transition: transform 0.5s ease;
+            transition: transform 0.3s ease;
         }
         button {
             background-color: yellow;
@@ -45,7 +44,7 @@
     <script>
         const moveButton = document.getElementById('moveButton');
         const centerBox = document.getElementById('centerBox');
-        
+
         moveButton.addEventListener('mouseover', () => {
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
@@ -55,7 +54,8 @@
             const randomX = Math.random() * (viewportWidth - boxWidth);
             const randomY = Math.random() * (viewportHeight - boxHeight);
 
-            centerBox.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            centerBox.style.left = `${randomX}px`;
+            centerBox.style.top = `${randomY}px`;
         });
     </script>
 </body>
