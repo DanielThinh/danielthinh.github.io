@@ -14,7 +14,7 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            background-image: url('https://github.com/DanielThinh/danielthinh.github.io/blob/main/detailed_hand_painted_pink_watercolour_background_0509.jpg'); /* Thay đổi URL nếu cần */
+            background-image: url('https://raw.githubusercontent.com/username/repository-name/main/images/background.png'); /* Thay đổi URL nếu cần */
             background-size: cover;
             background-position: center;
         }
@@ -38,7 +38,7 @@
 </head>
 <body>
     <div class="center-box" id="centerBox">
-        <p>Bấm vào nút dưới để nhận 50k từ Thịnh:)))</p>
+        <p>Bấm vào nút dưới để nhận 500k từ Thịnh:)))</p>
         <button id="moveButton">Bấm đây</button>
     </div>
 
@@ -46,7 +46,7 @@
         const moveButton = document.getElementById('moveButton');
         const centerBox = document.getElementById('centerBox');
 
-        moveButton.addEventListener('mouseover', () => {
+        const moveBox = () => {
             const boxWidth = centerBox.offsetWidth;
             const boxHeight = centerBox.offsetHeight;
             const viewportWidth = window.innerWidth;
@@ -62,7 +62,10 @@
 
             centerBox.style.left = `${randomX}px`;
             centerBox.style.top = `${randomY}px`;
-        });
+        };
+
+        // Sử dụng sự kiện click cho cả desktop và thiết bị di động
+        moveButton.addEventListener('click', moveBox);
     </script>
 </body>
 </html>
