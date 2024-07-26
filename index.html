@@ -13,9 +13,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: url('https://via.placeholder.com/1500x1000.png?text=Happy+Birthday+Decoration');
-            background-size: cover;
-            background-position: center;
+            overflow: hidden;
+            position: relative;
         }
         .center-box {
             background-color: white;
@@ -46,13 +45,13 @@
         const centerBox = document.getElementById('centerBox');
 
         moveButton.addEventListener('mouseover', () => {
-            const viewportWidth = window.innerWidth;
-            const viewportHeight = window.innerHeight;
             const boxWidth = centerBox.offsetWidth;
             const boxHeight = centerBox.offsetHeight;
+            const maxX = Math.min(window.innerWidth - boxWidth, 400);
+            const maxY = Math.min(window.innerHeight - boxHeight, 400);
 
-            const randomX = Math.random() * (viewportWidth - boxWidth);
-            const randomY = Math.random() * (viewportHeight - boxHeight);
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
 
             centerBox.style.left = `${randomX}px`;
             centerBox.style.top = `${randomY}px`;
