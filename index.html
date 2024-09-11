@@ -2,76 +2,131 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Celebration</title>
-    <style>
-        body {
-            background-color: pink;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            background-size: cover;
-            background-position: center;
-        }
-        .center-box {
-            background-color: white;
-            border: 2px solid yellow;
-            padding: 20px;
-            text-align: center;
-            position: absolute;
-            width: 250px;
-            height: 150px;
-            transition: transform 0.3s ease; 
-        }
-        .inner-box {
-            background-color: yellow;
-            border: 2px solid black;
-            padding: 10px;
-            margin-top: 20px;
-            display: inline-block;
-            width:  60px; 
-            height: 20px; 
-        }
-        .inner-box p {
-            margin: 0;
-            font-size: 14px;
-        }
-    </style>
+    <title>Sân Bóng</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="center-box" id="centerBox">
-        <p>Bấm vào nút bên dưới để nhận 500k từ Thịnh:)))</p>
-        <div class="inner-box" id="innerBox">
-            <p>Here:></p>
+    <div class="soccer-field">
+        <div class="teams-board">
+            <h2>Bảng Đội Bóng</h2>
+            <div id="team1" class="team">Đội 1: </div>
+            <div id="team2" class="team">Đội 2: </div>
+            <div id="team3" class="team">Đội 3: </div>
         </div>
+        <button onclick="assignTeams()">Chia Đội</button>
     </div>
 
-    <script>
-        const centerBox = document.getElementById('centerBox');
-
-        const moveBox = () => {
-            const boxWidth = centerBox.offsetWidth;
-            const boxHeight = centerBox.offsetHeight;
-            const viewportWidth = window.innerWidth;
-            const viewportHeight = window.innerHeight;
-
-            
-            const moveRangeX = 600; 
-            const moveRangeY = 600;  
-
-            
-            const randomX = Math.random() * moveRangeX;
-            const randomY = Math.random() * moveRangeY;
-
-            centerBox.style.transform = `translate(${randomX}px, ${randomY}px)`;
-        };
-
-       
-        document.querySelector('.inner-box').addEventListener('mouseover', moveBox);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #2c3e50;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.soccer-field {
+    width: 80%;
+    height: 80vh;
+    background: green;
+    position: relative;
+    border: 5px solid white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.teams-board {
+    width: 100%;
+    height: 150px;
+    background: #34495e;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.team {
+    background: #1abc9c;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #c0392b;
+}
+
+// Danh sách các bạn và kĩ năng đá bóng
+const players = [
+    { name: 'Trung Sơn', skill: 10 },
+    { name: 'Hưng', skill: 10 },
+    { name: 'Duy Anh', skill: 10 },
+    { name: 'Thịnh', skill: 8 },
+    { name: 'Tô An', skill: 8 },
+    { name: 'Duy Hoan', skill: 8 },
+    { name: 'Thanh Bình', skill: 8 },
+    { name: 'Quang Minh', skill: 8 },
+    { name: 'Trọng Thành', skill: 8 },
+    { name: 'Nghĩa', skill: 8 },
+    { name: 'Vi Trường An', skill: 7 },
+    { name: 'Hà Duy Tiến', skill: 7 },
+    { name: 'Anh Bắc', skill: 7 },
+    { name: 'Bùi Minh Hoàng', skill: 6 },
+    { name: 'Tiến Quang', skill: 6 },
+    { name: 'Lê Hồng Anh', skill: 6 },
+    { name: 'Nguyễn Minh Hoàng', skill: 5 },
+    { name: 'La Văn Huy', skill: 5 },
+    { name: 'Anh Quân', skill: 5 }
+];
+
+// Hàm để chia các bạn vào đội
+function assignTeams() {
+    // Shuffle ngẫu nhiên danh sách các bạn
+    const shuffledPlayers = players.sort(() => Math.random() - 0.5);
+    
+    // Tạo 3 đội
+    let team1 = [], team2 = [], team3 = [];
+    let skill1 = 0, skill2 = 0, skill3 = 0;
+
+    // Chia đội sao cho chất lượng đồng đều
+    shuffledPlayers.forEach(player => {
+        if (team1.length < 7 && (skill1 <= skill2 && skill1 <= skill3 || team2.length == 6 || team3.length == 6)) {
+            team1.push(player.name);
+            skill1 += player.skill;
+        } else if (team2.length < 6 && (skill2 <= skill1 && skill2 <= skill3 || team1.length == 7 || team3.length == 6)) {
+            team2.push(player.name);
+            skill2 += player.skill;
+        } else {
+            team3.push(player.name);
+            skill3 += player.skill;
+        }
+    });
+
+    // Hiển thị đội lên bảng
+    document.getElementById('team1').innerHTML = 'Đội 1: ' + team1.join(', ');
+    document.getElementById('team2').innerHTML = 'Đội 2: ' + team2.join(', ');
+    document.getElementById('team3').innerHTML = 'Đội 3: ' + team3.join(', ');
+}
